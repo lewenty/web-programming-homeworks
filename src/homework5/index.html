@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h5>javascript string processing..</h5>
+<hr/>
+<table border="0">
+    <tr>
+        <td valign="top">
+            <select id="selectKitap" name="selectKitap">
+                <option value="0"> Lütfen Kitap Seçiniz..</option>
+                <option value="Ağacın Çürüğü # Yaşar Kemal # 12.60"> Ağacın Çürüğü</option>
+                <option value="Amerikan Mektupları # Nurettin TOPÇU # 4.49"> Amerikan Mektupları</option>
+                <option value="Bab-ı Esrar # Ahmet ÜMİT # 16.00"> Bab-ı Esrar</option>
+                <option value="Cumhuriyet Efsaneleri # Mustafa ARMAĞAN # 17.50"> Cumhuriyet Efsaneleri</option>
+                <option value="Çile # Necip Fazıl KISAKÜREK # 17.16"> Çile</option>
+                <option value="Devlet-i Aliyye & Osmanlı İmparatorluğu Üzerine Araştırmalar - II # Halil İNALCIK # 19.45 ">
+                    Devlet-i Aliyye & Osmanlı İmparatorluğu Üzerine Araştırmalar - II
+                </option>
+                <option value="İskender # Elif ŞAFAK # 20.80"> İskender</option>
+                <option value="Romeo - Juliet ve Kral Lear # William SHAKESPEARE # 8.40"> Romeo - Juliet ve Kral Lear
+                </option>
+                <option value="Şah Sultan # İskender PALA # 12.00"> Şah Sultan</option>
+            </select>
+            <button id="btnSepeteEkle" onclick="fncSepeteEkle()"> Sepete Ekle</button>
+        </td>
+        <td><img src="../img/ayir.png"></td>
+        <td valign="top" width="50%"> Seçtikleriniz..
+            <hr/>
+            <div id="secilenKitaplar" style="/*border: 1px solid darkblue;*/ width: 100%;"></div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <button onclick="hesapla();">Hesapla</button>
+            <b>Toplam : </b> <label id="labelToplam"></label> | <b> KDV Dahil Toplam : </b> <label
+                id="labelKdvToplam"></label>
+        </td>
+    </tr>
+</table>
+
+<script>
+    //    alert("yepp");
+
+    function fncSepeteEkle() {
+        var secilenKitap = document.getElementById("selectKitap").value;
+
+        //hiç kitap seçilmediyse..
+        if (secilenKitap == "0") {
+            //alert("Lütfen Bir Kitap Seçiniz..");
+            return false;
+        }
+
+
+        //random bir ID oluştur...
+        var randId = "";
+        var charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            randId += charList.charAt(Math.floor(Math.random() * charList.length));
+
+
+        var kitapArr = secilenKitap.split('#');
+        var kitap = kitapArr[0];
+        var yazar = kitapArr[1];
+        var fiyat = kitapArr[2];
+
+        //alert("kitap ::: " + kitap + " ---------   yazar ::: " + yazar + " -------------   fiyat ::: " + fiyat);
+
+        var sonucHtml = " * " + fiyat + " -- " + kitap + " (" + yazar + ")";
+
+        //document.getElementById("secilenKitaplar").innerHTML = sonucHtml;
+        var pElem = document.createElement("p");
+        pElem.setAttribute('class', fiyat);
+        pElem.setAttribute('id', randId);
+        pElem.setAttribute('title', 'Sepetten Çıkarmak İçin Tıklayın');
+
+        var textN = document.createTextNode(sonucHtml);
+        pElem.appendChild(textN);
+
+        var element = document.getElementById("secilenKitaplar");
+        element.appendChild(pElem);
+
+    }
+
+
+    document.getElementById("secilenKitaplar").addEventListener('click', function (e) {
+
+        var elem = e.target.id;
+        // alert(elem);
+        var remElem = document.getElementById(elem);
+
+        if (elem != "secilenKitaplar") {
+            remElem.remove();
+        }
+    });
+
+
+    function hesapla() {
+        //alert("yyYYyy");
+        var inputs = document.getElementsByTagName('p');
+        var totalVal = 0;
+        totalVal = parseFloat(totalVal);
+
+        for (var i = 0; i < inputs.length; i++) {
+            //alert(inputs[i].getAttribute('class'));
+            totalVal = totalVal + parseFloat(inputs[i].getAttribute('class'));
+        }
+
+        //alert(totalVal);
+        var totalKdvVal = totalVal * 0.08;
+        //alert(totalKdvVal);
+        document.getElementById("labelToplam").innerHTML = totalVal + "TL";
+        document.getElementById("labelKdvToplam").innerHTML = (totalVal + totalKdvVal) + "TL";
+    }
+
+</script>
+</body>
+</html>

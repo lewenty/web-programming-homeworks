@@ -1,10 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <title> Hesap Makinesi </title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 </head>
 <body>
-homework3
+<h1>Hesap Makinesi Projesi - Javascript </h1>
+
+<form id="frmHesaplar">
+
+    <input type="hidden" name="val1" id="val1" value="15"><br/>
+    <input type="hidden" name="val2" id="val2" value="5"><br/>
+    <input type="hidden" name="islemTipi" id="islemTipi" value="+">
+    <input type="hidden" name="islemGecisi" id="islemGecisi" value="false">
+
+    <table border="1">
+        <tr>
+            <td colspan="4"><input type="text" name="deger" id="deger"/></td>
+        </tr>
+        <tr>
+            <td>
+                <button name="btnC" id="btnC" value="btnC" type="button" onclick='islemSec(this)'>C</button>
+            </td>
+            <td>
+                <button name="/" id="/" value="/" onclick='islemSec(this)' type="button">/</button>
+            </td>
+            <td>
+                <button name="*" id="*" value="*" onclick='islemSec(this)' type="button">*</button>
+            </td>
+            <td>
+                <button name="-" id="-" value="-" onclick='islemSec(this)' type="button">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" value="7" onclick='degerSec(this)'>7</button>
+            </td>
+            <td>
+                <button type="button" value="8" onclick='degerSec(this)'>8</button>
+            </td>
+            <td>
+                <button type="button" value="9" onclick='degerSec(this)'>9</button>
+            </td>
+            <td rowspan="2">
+                <button name="+" id="+" value="+" onclick='islemSec(this)' type="button" style="height:100%;"> +
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" value="4" onclick='degerSec(this)'>4</button>
+            </td>
+            <td>
+                <button type="button" value="5" onclick='degerSec(this)'>5</button>
+            </td>
+            <td>
+                <button type="button" value="6" onclick='degerSec(this)'>6</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" value="1" onclick='degerSec(this)'>1</button>
+            </td>
+            <td>
+                <button type="button" value="2" onclick='degerSec(this)'>2</button>
+            </td>
+            <td>
+                <button type="button" value="3" onclick='degerSec(this)'>3</button>
+            </td>
+            <td rowspan="2">
+                <button type="button" style="height:100%" onclick="hesapla();"> =</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button type="button" style="width:100%;" value="0" onclick='degerSec(this)'> 0</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+
+    function degerSec(objButton) {
+        var btnDeger = objButton.value;
+        var degerKutusu = document.getElementById('deger');
+        var deger = degerKutusu.value;
+        var islemGecisi = document.getElementById('islemGecisi');
+        var val1 = (document.getElementById('val1'));
+
+
+        //operatörlerden birine tıklandıysa
+        if (islemGecisi.value == "true") {
+
+            val1.value = deger;
+            deger = "";
+            islemGecisi.value = false;
+        }
+
+        degerKutusu.value = deger + "" + btnDeger;
+
+
+    }
+
+
+    function islemSec(objButton) {
+
+        var ilkDeger = document.getElementById('val1');
+        var ikinciDeger = document.getElementById('val2');
+        var islemTipi = document.getElementById('islemTipi');
+        var islemGecisi = document.getElementById('islemGecisi');
+        var deger = document.getElementById('deger');
+
+        //değerleri sil
+        var btnDeger = objButton.value;
+        if (btnDeger == "btnC") {
+            ilkDeger.value = 0;
+            ikinciDeger.value = 0;
+            islemTipi.value = "+";
+            islemGecisi.value = false;
+            deger.value = "";
+            return false;
+        }
+
+
+        //sonucu yaz
+        var sonuc = document.getElementById('islemTipi');
+        sonuc.value = btnDeger;
+        islemGecisi.value = true;
+    }
+
+
+    //hesaplama yap
+    function hesapla() {
+
+        //inputtaki değeri ikinci değere set et
+        var deger = document.getElementById('deger').value;
+        document.getElementById('val2').value = deger;
+
+        //girilen değerleri oku
+        var val1 = parseInt(document.getElementById('val1').value);
+        var val2 = parseInt(document.getElementById('val2').value);
+        var islemTipi = document.getElementById('islemTipi').value;
+        var val3;
+
+        //değer girilmeden eşittir'e basılırsa
+        if (isNaN(val1) == true || isNaN(val2) == true) {
+            alert("İki Değeride Girmeden Sonuç Alamazsınız");
+            return false;
+        }
+
+        //hesapla
+        if (islemTipi == "+") {
+            val3 = (val1) + (val2);
+        }
+        if (islemTipi == "-") {
+            val3 = (val1) - (val2);
+        }
+        if (islemTipi == "/" && val1 != "0") {
+            val3 = (val1) / (val2);
+        }
+        if (islemTipi == "*") {
+            val3 = (val1) * (val2);
+        }
+
+        //alert("hesapla : "+val3);
+
+        var sonuc = document.getElementById('deger');
+        sonuc.value = val3;
+
+    } // hesapla bitiş..
+</script>
 </body>
 </html>
