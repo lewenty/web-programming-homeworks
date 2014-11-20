@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Kitap Satış Sitesi - Okan Ünv WbProg. Ödev</title>
+    <style>
+        .header{
+            width: 100%;
+            border:1px solid #000;
+            /*            display: block;*/
+        }
+
+        .logo{
+            display: inline-block;
+            float: left;
+            border:1px solid #000;
+        }
+
+        .search{
+            display: inline-block;
+            float: left;
+            border:1px solid #000;
+        }
+
+        .divKitap{
+            width: 150px;
+            height: 300px;
+            border: 1px solid #000;
+            display: inline-block;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .divKitap img{
+            display: inline-block;
+        }
+
+        .kitapBoyut{
+            width: 150px;
+            height: 200px;
+        }
+
+        td{
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="postResult.php" method="POST" >
+        <table width="100%">
+            <tr>
+                <td colspan="2"> 
+
+            <div class="header">
+                <div class="logo"> <img src="../img/book-store-logo" width="150" /></div>
+                <div class="search"> <input type="text" placeholder="Ara"></div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr/>
+            <div class="divKitap">
+                <img  src="../resources/img/agacincurugu.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Ağacın ÇÜRÜĞÜ</label><br/>
+                <label class="lblYazarAdi"><b>Yaşar KEMAL</b></label><br/>
+                <label class="lblFiyat"> 13.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('13.40', 'Ağacın ÇÜRÜĞÜ', 'Yaşar KEMAL')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/farketdegis.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Farket Uygula Değiş</label>
+                <label class="lblYazarAdi"><b>Arzu BIYIKLIOĞLU</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Farket Uygula Değiş', 'Arzu BIYIKLIOĞLU')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/goodfather.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı"> The Good Father </label>
+                <label class="lblYazarAdi"><b>Don Vito Corleone</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'The Good Father', 'Don Vito Corleone')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/idealannebaba.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Çocuk Eğitiminde İdeal Anne Baba</label>
+                <label class="lblYazarAdi"><b>Mehmet TEBER</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Çocuk Eğitiminde İdeal Anne Baba', 'Mehmet TEBER')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/insanisterse.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">İnsan İsterse</label>
+                <label class="lblYazarAdi"><b>Mümin SEKMAN</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'İnsan İsterse', 'Mümin SEKMAN')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/sadecehatyat.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Sadece Hayat</label>
+                <label class="lblYazarAdi"><b>Ümit YILDIZ</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Sadece Hayat', 'Ümit YILDIZ')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/saftrik.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Saftirik</label>
+                <label class="lblYazarAdi"><b>Tim COLLINS</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Saftirik', 'Tim COLLINS')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/sarikamis.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Tarihin Sarıkamış Duruşması</label>
+                <label class="lblYazarAdi"><b>Dr. Ramazan BALCI</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Tarihin Sarıkamış Duruşması', 'Dr. Ramazan BALCI')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/satranc.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Satranç Cinayetleri</label>
+                <label class="lblYazarAdi"><b>Cenk ÇALIŞIR</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Satranç Cinayetleri', 'Cenk ÇALIŞIR')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/sengitmeden.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Sen Gitmeden Önce</label>
+                <label class="lblYazarAdi"><b>Onur ERGEN</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Sen Gitmeden Önce', 'Onur ERGEN')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/stephenking.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Yeşil Yol</label>
+                <label class="lblYazarAdi"><b>Stephen KING</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Yeşil Yol', 'Stephen KING')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/teknoloji.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Teknoloji Kimin Umrunda</label>
+                <label class="lblYazarAdi"><b>Mehmet DOĞAN</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Teknoloji Kimin Umrunda', 'Mehmet DOĞAN')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_islamVeIlim.png" class="kitapBoyut" />
+                <label class="lblKitapAdı">İslam Ve İlim</label>
+                <label class="lblYazarAdi"><b>Prof. Dr. N. ERBAKAN</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'İslam Ve İlim', 'Prof. Dr. N. ERBAKAN')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_istanbulHatirasi.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">İstanbul Hatırası</label>
+                <label class="lblYazarAdi"><b>Ahmet ÜMİT</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'İstanbul Hatırası', 'Ahmet ÜMİT')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_kendikendinesatan.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Kendi Kendine Satan Ürünler Yaratmak</label>
+                <label class="lblYazarAdi"><b>Alex BOGUSKY</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Kendi Kendine Satan Ürünler Yaratmak', 'Alex BOGUSKY')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_mucizeler.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Mucizeler Dükkanına Dönüş</label>
+                <label class="lblYazarAdi"><b>Debbie MACOMBER</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Mucizeler Dükkanına Dönüş', 'Debbie MACOMBER')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_olunceuyanirlar.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">İnsanlar Uykudadır Ölünce Uyanırlar</label>
+                <label class="lblYazarAdi"><b>Emre DORMAN</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'İnsanlar Uykudadır Ölünce Uyanırlar', 'Emre DORMAN')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_pazarlama.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Pazarlama Etiği Ve Örnek Olaylar</label>
+                <label class="lblYazarAdi"><b>Dr. Ertan ÖZDEMİR</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Pazarlama Etiği Ve Örnek Olaylar', 'Dr. Ertan ÖZDEMİR')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_sharma.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Ferrarisini Satan Bilge</label>
+                <label class="lblYazarAdi"><b>Robin SHARMA</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Ferrarisini Satan Bilge', 'Robin SHARMA')"> Sepete Ekle </button></label>
+            </div>
+            <div class="divKitap">
+                <img  src="../resources/img/_yarali.jpg" class="kitapBoyut" />
+                <label class="lblKitapAdı">Yaralı</label>
+                <label class="lblYazarAdi"><b>Kahraman TAZEOĞLU</b></label>
+                <label class="lblFiyat"> 23.40 TL</label><hr/>
+                <label> <button type="button" onclick="sepeteEkle('23.40', 'Yaralı', 'Kahraman TAZEOĞLU')"> Sepete Ekle </button></label>
+            </div>
+
+            </td>
+            <td width="300" valign="top">
+                <hr/>
+                Sepet
+            <div id="cart"></div>
+            <input type="submit" value="Onayla" />
+            </td>
+            </tr>
+        </table>
+    </form>
+
+<script>
+
+    function sepeteEkle(fiyat, kitap, yazar) {
+        //alert("Fiyat ::::: " + fiyat + " ----- kitap :::::" + kitap + " -----yazar :::::" + yazar);
+
+        //random bir ID oluştur...
+        var randId = "";
+        var charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            randId += charList.charAt(Math.floor(Math.random() * charList.length));
+
+
+
+        var sonucHtml = " * " + fiyat + " -- " + kitap + " (" + yazar + ")";
+
+        var cart = document.getElementById("cart");
+
+        var pElem = document.createElement("p");
+        pElem.setAttribute('class', fiyat);
+        pElem.setAttribute('id', randId);
+        pElem.setAttribute('title', 'Sepetten Çıkarmak İçin Tıklayın');
+
+
+        var hiddenElem = document.createElement("input");
+        hiddenElem.setAttribute("type", "hidden");
+        hiddenElem.setAttribute('id', randId);
+        hiddenElem.setAttribute('name', "kitaplar[]");
+        hiddenElem.setAttribute('value', fiyat + "#" + kitap + "#" + yazar);
+
+
+        var textN = document.createTextNode(sonucHtml);
+        pElem.appendChild(textN);
+
+        var element = document.getElementById("cart");
+        element.appendChild(pElem);
+        element.appendChild(hiddenElem);
+
+        document.getElementById("cart").addEventListener('click', function (e) {
+
+            var elem = e.target.id;
+            // alert(elem);
+            var remElem = document.getElementById(elem);
+
+            if (elem != "secilenKitaplar") {
+                remElem.remove();
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>
